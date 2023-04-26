@@ -6,6 +6,9 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  TF_VAR_ci: true
+
 jobs:
   build-n-push:
     runs-on: ubuntu-latest

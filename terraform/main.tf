@@ -14,7 +14,13 @@ terraform {
   }
 }
 
+variable "ci" {
+  type    = bool
+  default = false
+}
+
 provider "azurerm" {
+  use_oidc = var.ci
   features {}
 }
 
