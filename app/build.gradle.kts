@@ -9,8 +9,9 @@
 
 plugins {
     application
-    id("org.jetbrains.kotlin.jvm") version "1.8.10"
     id("io.ktor.plugin") version "2.3.0"
+    kotlin("jvm") version "1.8.10"
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 repositories {
@@ -23,6 +24,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:2.3.0")
     implementation("io.ktor:ktor-server-freemarker:2.3.0")
     implementation("ch.qos.logback:logback-classic:1.4.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
