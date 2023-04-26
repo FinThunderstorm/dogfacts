@@ -1,9 +1,10 @@
 <#-- @ftlvariable name="fact" type="java.lang.String" -->
 <#import "_layout.ftl" as layout />
 <@layout.header>
-    <p>${fact}</p>
-    <hr>
+    <blockquote class="blockquote">
+        <p>${fact}</p>
+    </blockquote>
     <p>
-        <a href="/">Get next one</a>
+        <a href="/" class="btn btn-primary ms-auto me-auto" role="button">Get next one</a>
     </p>
 </@layout.header>
