@@ -42,7 +42,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Init Terraform
-        run: terraform init
+        run: pushd terraform && terraform init && popd
 
       - name: Apply Terraform
-        run: terraform apply
+        run: pushd terraform && terraform apply && popd
