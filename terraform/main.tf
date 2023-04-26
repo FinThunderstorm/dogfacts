@@ -1,3 +1,8 @@
+variable "ci" {
+  type    = bool
+  default = false
+}
+
 terraform {
   required_version = ">= 1.1.0"
   backend "azurerm" {
@@ -5,6 +10,7 @@ terraform {
     storage_account_name = "dogfacttfstate"
     container_name       = "dogfacttfstate"
     key                  = "dogfacts-ci.tfstate"
+    use_oidc             = var.ci
   }
   required_providers {
     azurerm = {
@@ -12,11 +18,6 @@ terraform {
       version = "3.53.0"
     }
   }
-}
-
-variable "ci" {
-  type    = bool
-  default = false
 }
 
 provider "azurerm" {
