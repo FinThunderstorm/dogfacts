@@ -17,6 +17,9 @@ import kotlinx.serialization.json.*
 
 fun Application.configureRouting() {
     routing {
+        get("/ping") {
+            call.respond("pong")
+        }
         get("/") {
 
             val client = HttpClient.newBuilder().build()
