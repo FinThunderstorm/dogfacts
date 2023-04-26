@@ -17,9 +17,6 @@ import kotlinx.serialization.json.*
 
 fun Application.configureRouting() {
     routing {
-        static("/static") {
-            resources("files")
-        }
         get("/") {
 
             val client = HttpClient.newBuilder().build()
