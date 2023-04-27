@@ -1,8 +1,3 @@
-variable "ci" {
-  type    = bool
-  default = false
-}
-
 terraform {
   required_version = ">= 1.1.0"
   backend "azurerm" {
@@ -20,7 +15,6 @@ terraform {
 }
 
 provider "azurerm" {
-  use_oidc = var.ci
   features {}
 }
 
