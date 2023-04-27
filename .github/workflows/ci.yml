@@ -45,7 +45,11 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Init Terraform
-        run: pushd terraform && terraform init --backend-config="use_oidc=true" && popd
+        run: pushd terraform && terraform init && popd
+        env:
+          ARM_USE_OIDC: true
+          ARM_TENANT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
       - name: Apply Terraform
         run: pushd terraform && terraform apply && popd
