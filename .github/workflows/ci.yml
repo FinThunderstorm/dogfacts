@@ -45,7 +45,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Init Terraform
-        run: pushd terraform && terraform init && popd
+        run: pushd terraform && terraform init --backend-config="use_oidc=true" && popd
 
       - name: Apply Terraform
         run: pushd terraform && terraform apply && popd

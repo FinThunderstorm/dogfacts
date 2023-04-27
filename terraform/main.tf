@@ -10,7 +10,6 @@ terraform {
     storage_account_name = "dogfacttfstate"
     container_name       = "dogfacttfstate"
     key                  = "dogfacts-ci.tfstate"
-    use_oidc             = var.ci
   }
   required_providers {
     azurerm = {
