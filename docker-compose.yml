@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:5.0.17
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dog
+      MONGO_INITDB_ROOT_PASSWORD: facts
+
+  mongo-express:
+    image: mongo-express:1.0.0-alpha
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: dog
+      ME_CONFIG_MONGODB_ADMINPASSWORD: facts
+      ME_CONFIG_MONGODB_URL: mongodb://dog:facts@mongo:27017/
+
+volumes:
+  mongo-data: null
