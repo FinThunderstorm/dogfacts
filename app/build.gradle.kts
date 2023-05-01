@@ -25,6 +25,7 @@ dependencies {
     implementation("io.ktor:ktor-server-freemarker:2.3.0")
     implementation("ch.qos.logback:logback-classic:1.4.7")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.litote.kmongo:kmongo:4.9.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
