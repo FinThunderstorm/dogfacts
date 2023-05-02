@@ -1,6 +1,6 @@
 # Random Dog Facts
 
-Basic client for fetching random dog facts from `dogapi.dog`.
+Basic client for fetching random dog facts from `dogapi.dog`. App available at [https://dogfacts.azurewebsites.net](https://dogfacts.azurewebsites.net)
 
 ## Running
 
