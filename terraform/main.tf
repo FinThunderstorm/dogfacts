@@ -36,6 +36,9 @@ resource "azurerm_cosmosdb_account" "db" {
   kind                = "MongoDB"
   enable_free_tier    = true
 
+  capacity {
+    total_throughput_limit = 1000
+  }
 
   capabilities {
     name = "MongoDBv3.4"
