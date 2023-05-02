@@ -4,9 +4,8 @@ import org.litote.kmongo.*
 
 data class Voting(val id: String, val votesCount: Int)
 
-class VotingService {
-    private val connectionString = System.getenv("CUSTOMCONNSTR_DB") ?: "mongodb://dog:facts@localhost:27017"
-    private val client = KMongo.createClient(connectionString)
+class VotingService(dbUrl: String) {
+    private val client = KMongo.createClient(dbUrl)
     private val database = client.getDatabase("votings")
     private val votingCollection = database.getCollection<Voting>()
 

@@ -89,7 +89,7 @@ resource "azurerm_linux_web_app" "app" {
   connection_string {
     name  = "DB"
     type  = "Custom"
-    value = azurerm_cosmosdb_account.db.endpoint
+    value = azurerm_cosmosdb_account.db.connection_strings[0]
   }
 
   tags = {

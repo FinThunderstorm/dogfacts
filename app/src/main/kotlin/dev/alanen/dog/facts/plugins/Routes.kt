@@ -19,7 +19,9 @@ import kotlinx.serialization.json.*
 import dev.alanen.dog.facts.plugins.*
 
 fun Application.configureRouting() {
-    val vs = VotingService()
+    val connectionString: String = System.getenv("CUSTOMCONNSTR_DB") ?: "mongodb://dog:facts@localhost:27017"
+    println("Connecting to DB with connection string: $connectionString")
+    val vs = VotingService(connectionString)
     routing {
         get("/ping") {
             call.respond("pong")
