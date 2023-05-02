@@ -28,6 +28,34 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
+resource "azurerm_cosmosdb_account" "db" {
+  name                = "dogfacts-db"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  offer_type          = "Standard"
+  kind                = "MongoDB"
+  enable_free_tier    = true
+
+
+  capabilities {
+    name = "MongoDBv3.4"
+  }
+  capabilities {
+    name = "EnableMongo"
+  }
+
+  consistency_policy {
+    consistency_level       = "BoundedStaleness"
+    max_interval_in_seconds = 300
+    max_staleness_prefix    = 100000
+  }
+
+  geo_location {
+    location          = azurerm_resource_group.rg.location
+    failover_priority = 0
+  }
+}
+
 resource "azurerm_service_plan" "plan" {
   name                = "dogfacts"
   resource_group_name = azurerm_resource_group.rg.name
@@ -56,6 +84,12 @@ resource "azurerm_linux_web_app" "app" {
       docker_image     = "docker.io/tualanen/dogfacts"
       docker_image_tag = "latest"
     }
+
+  }
+  connection_string {
+    name  = "DB"
+    type  = "Custom"
+    value = azurerm_cosmosdb_account.db.endpoint
   }
 
   tags = {
