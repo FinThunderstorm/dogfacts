@@ -51,4 +51,4 @@ jobs:
         run: pushd terraform && terraform init && popd
 
       - name: Apply Terraform
-        run: pushd terraform && terraform apply && popd
+        run: pushd terraform && terraform apply --auto-approve && popd
